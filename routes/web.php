@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\sesicontroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+    Route::get('/',[sesicontroller::class, 'index']);
+    Route::post('/',[sesicontroller::class, 'login']);
+
+
+
+    Route::get('/admin',[sesicontroller::class, 'index']);
+
+    Route::resource('/posts', \App\Http\Controllers\PostController::class);
